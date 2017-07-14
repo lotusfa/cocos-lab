@@ -164,7 +164,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "28bd00ng21IqJFQQioikjCf",
+    "fileId": "3a0fekRcEFDo54qc94IIk6/",
     "sync": false
   },
   {
@@ -251,7 +251,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "74e4dkk44RPJ6CY95cmmWZ7",
+    "fileId": "c6b219mCIdNE4ynoi0WiRw4",
     "sync": false
   },
   {
@@ -312,7 +312,8 @@
     "init_speed": 1000,
     "box_label": {
       "__id__": 6
-    }
+    },
+    "value": 0
   },
   {
     "__type__": "cc.PhysicsCircleCollider",
@@ -343,7 +344,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "20e0ebPWd9PRJhr7LURI83H",
+    "fileId": "e8fdcdZ0/hCiZlXj87GDrPb",
     "sync": false
   }
 ]

@@ -22,7 +22,12 @@ cc.Class({
             type: cc.Prefab
         },
         
-        load_Box: 50
+        touthSensor : {
+            default:null,
+            type: cc.Prefab
+        },
+        
+        load_Box: 50,
     },
 
     // use this for initialization
@@ -37,8 +42,21 @@ cc.Class({
         }
         
         this.node.on('touchstart', function (event) {
-            
+            this.initTouchSensor(event.getLocation());
         }, this);
+        
+        this.node.on('touchmove', function (event) {
+            this.updateTouchSensor(event.getLocation());
+        }, this);
+        
+        this.node.on('touchend', function (event) {
+            this.destroyTouchSensor();
+        }, this);
+        
+        this.node.on('touchcancel', function (event) {
+            this.destroyTouchSensor();
+        }, this);
+        
         
         let self = this;
         this.node.on('killMe', function (event) {
@@ -60,7 +78,21 @@ cc.Class({
         this.zeroNode.addChild(newBox);
         newBox.setPosition(cc.p(x,y));
     },
-
+    
+    initTouchSensor: function(p){
+        this.ts = cc.instantiate(this.touthSensor);
+        this.zeroNode.addChild(this.ts);
+        this.ts.setPosition(p);
+    },
+    
+    updateTouchSensor: function(p){
+        this.ts.setPosition(p);
+    },
+    
+    destroyTouchSensor: function(){
+        this.ts.destroy();
+    },
+    
     update: function (dt) {
         
     },

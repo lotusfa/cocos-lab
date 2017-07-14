@@ -940,6 +940,9 @@
     "boxPrefab": {
       "__uuid__": "dad507aa-7590-484b-9dfd-97efaa2bb455"
     },
-    "load_Box": 25
+    "touthSensor": {
+      "__uuid__": "905365e6-a466-4243-8446-6fb73c3e2ea6"
+    },
+    "load_Box": 5
   }
 ]
