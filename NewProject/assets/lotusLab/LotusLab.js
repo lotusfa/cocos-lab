@@ -30,31 +30,36 @@ cc.Class({
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getCollisionManager().enable = true;
         
+        this.ballPool = new cc.NodePool();
+        
         for (var i = 0; i < this.load_Box ; i++) { 
-            
-            
             this.spawnNewBox( this.node.width/2 ,this.node.height);
         }
         
         this.node.on('touchstart', function (event) {
-          this.spawnNewBox(event.getLocationX(),event.getLocationY());
+            
         }, this);
+        
+        let self = this;
+        this.node.on('killMe', function (event) {
+            self.ballPool.put(event.target);
+            event.stopPropagation();
+            self.spawnNewBox( self.node.width/2 ,self.node.height);
+        });
         
         
     },
     
     spawnNewBox: function(x,y) {
-        
-        var newBox = cc.instantiate(this.boxPrefab);
-        
+        let newBox = null;
+        if(this.ballPool.size() > 0){
+            newBox = this.ballPool.get();
+        }else{
+            newBox = cc.instantiate(this.boxPrefab);
+        }
         this.zeroNode.addChild(newBox);
-        
         newBox.setPosition(cc.p(x,y));
     },
-    
-    
-    
-
 
     update: function (dt) {
         

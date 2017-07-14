@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "d5140657-8d2f-4303-9977-d44a10db5da2",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Glass-Bottle-PNG": {
+      "ver": "1.0.3",
+      "uuid": "4684391c-82c2-49be-874d-2bef46dfa280",
+      "rawTextureUuid": "d5140657-8d2f-4303-9977-d44a10db5da2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 10,
+      "trimX": 595,
+      "trimY": 114,
+      "width": 809,
+      "height": 1908,
+      "rawWidth": 2000,
+      "rawHeight": 2156,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
