@@ -7,6 +7,8 @@ cc.Class({
             default : null,
             type: cc.Label
         },
+        opacity_selected_on : 250,
+        opacity_selected_off : 150,
         value : 0
     },
 
@@ -17,11 +19,7 @@ cc.Class({
         
         this.node._components[1]._linearVelocity.x = this.init_speed*Math.random()*(-1)^Math.random();
         this.node._components[1]._linearVelocity.y = -1*this.init_speed*Math.random();
-        // let self = this.node;
-        // this.node.on('touchstart', function (event) {
-        //     this.generateRandomNumber();
-        //     this.node.dispatchEvent( new cc.Event.EventCustom('killMe', true) );
-        // }, this);
+        this.offSelected();
         
     },
         
@@ -29,6 +27,14 @@ cc.Class({
         let str = Math.round(Math.random()*4)+1;
         this.value = str;
         this.box_label.string = str;
+    },
+    
+    onSelected : function(){
+        this.node.opacity = this.opacity_selected_on;
+    },
+    
+    offSelected : function(){
+        this.node.opacity = this.opacity_selected_off;
     },
 
     // called every frame, uncomment this function to activate update callback
