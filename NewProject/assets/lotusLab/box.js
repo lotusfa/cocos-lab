@@ -1,8 +1,6 @@
 cc.Class({
     extends: cc.Component,
     
-    
-    
     properties: {
         init_speed : 1000,
         box_label : {
@@ -31,7 +29,6 @@ cc.Class({
         let str = Math.round(Math.random()*4)+1;
         this.value = str;
         this.box_label.string = str;
-        
     },
 
     // called every frame, uncomment this function to activate update callback

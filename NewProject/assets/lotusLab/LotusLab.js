@@ -22,16 +22,13 @@ cc.Class({
             type: cc.Prefab
         },
         
-        touthSensor : {
-            default:null,
-            type: cc.Prefab
-        },
-        
         load_Box: 50,
     },
 
     // use this for initialization
     onLoad: function () {
+        let self = this;
+        
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getCollisionManager().enable = true;
         
@@ -41,30 +38,45 @@ cc.Class({
             this.spawnNewBox( this.node.width/2 ,this.node.height);
         }
         
+        function check_all_ball_find_kill(event){
+            self.zeroNode._children.forEach(function(element) {
+                checkDist_then_kill(element,event);
+            });
+        }
+        
+        function checkDist_then_kill(element,event){
+            var dist = cc.pDistance(event.getLocation(), element.position);
+            if(dist < element.height/2 ){
+                kill_ball(element);
+            }
+        }
+        
+        function kill_ball(ball){
+            self.ballPool.put(ball);
+            self.spawnNewBox( self.node.width/2 ,self.node.height);
+        }
+        
         this.node.on('touchstart', function (event) {
-            this.initTouchSensor(event.getLocation());
+            check_all_ball_find_kill(event);
         }, this);
         
         this.node.on('touchmove', function (event) {
-            this.updateTouchSensor(event.getLocation());
+            check_all_ball_find_kill(event);
         }, this);
         
         this.node.on('touchend', function (event) {
-            this.destroyTouchSensor();
         }, this);
         
         this.node.on('touchcancel', function (event) {
-            this.destroyTouchSensor();
         }, this);
         
         
-        let self = this;
+        
         this.node.on('killMe', function (event) {
             self.ballPool.put(event.target);
             event.stopPropagation();
             self.spawnNewBox( self.node.width/2 ,self.node.height);
         });
-        
         
     },
     
@@ -75,22 +87,9 @@ cc.Class({
         }else{
             newBox = cc.instantiate(this.boxPrefab);
         }
+        
         this.zeroNode.addChild(newBox);
         newBox.setPosition(cc.p(x,y));
-    },
-    
-    initTouchSensor: function(p){
-        this.ts = cc.instantiate(this.touthSensor);
-        this.zeroNode.addChild(this.ts);
-        this.ts.setPosition(p);
-    },
-    
-    updateTouchSensor: function(p){
-        this.ts.setPosition(p);
-    },
-    
-    destroyTouchSensor: function(){
-        this.ts.destroy();
     },
     
     update: function (dt) {
