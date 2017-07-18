@@ -157,7 +157,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5905avVjvJCeYkDMn9X3bAQ",
+    "fileId": "8e7a5SuRXtHWKIgFxM9eTxa",
     "sync": false
   },
   {
@@ -196,7 +196,7 @@
     "_enabled": true,
     "_type": 2,
     "_allowSleep": true,
-    "_gravityScale": 2,
+    "_gravityScale": 9.8,
     "_linearDamping": 0,
     "_angularDamping": 0,
     "_linearVelocity": {
@@ -217,10 +217,13 @@
       "__id__": 1
     },
     "_enabled": true,
-    "init_speed": 1000,
+    "init_speed_x": 400,
+    "init_speed_y": 1000,
     "box_label": {
       "__id__": 3
     },
+    "opacity_selected_on": 255,
+    "opacity_selected_off": 160,
     "value": 0
   },
   {
@@ -252,7 +255,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "d8e62jdMTdClovWBv/R2ssW",
+    "fileId": "c67954Cu3BLYr0+E4XWKGzW",
     "sync": false
   }
 ]

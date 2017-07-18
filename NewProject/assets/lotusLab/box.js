@@ -2,7 +2,8 @@ cc.Class({
     extends: cc.Component,
     
     properties: {
-        init_speed : 1000,
+        init_speed_x : 1000,
+        init_speed_y : 1000,
         box_label : {
             default : null,
             type: cc.Label
@@ -17,8 +18,9 @@ cc.Class({
         
         this.generateRandomNumber();
         
-        this.node._components[1]._linearVelocity.x = this.init_speed*Math.random()*(-1)^Math.random();
-        this.node._components[1]._linearVelocity.y = -1*this.init_speed*Math.random();
+        var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+        this.node._components[1]._linearVelocity.x = this.init_speed_x*Math.random()*plusOrMinus;
+        this.node._components[1]._linearVelocity.y = -1*this.init_speed_y*Math.random();
         this.offSelected();
         
     },
@@ -36,6 +38,10 @@ cc.Class({
     offSelected : function(){
         this.node.opacity = this.opacity_selected_off;
     },
+    
+    touchGround : function(){
+        this.node.dispatchEvent( new cc.Event.EventCustom('touchGround', true) );
+    }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {

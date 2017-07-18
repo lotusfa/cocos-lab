@@ -22,30 +22,51 @@ cc.Class({
             type: cc.Prefab
         },
         
-        load_Box: 50,
+        init_Ball: 50,
+        
+        wave_label : {
+            default: null,
+            type: cc.Label
+        },
+        
+        sore_label : {
+            default: null,
+            type: cc.Label
+        },
+        
+        life_label : {
+            default: null,
+            type: cc.Label
+        },
+        
+        score : 0 ,
+        
+        wave: 1,
+        
+        life: 50,
     },
 
     // use this for initialization
     onLoad: function () {
         let self = this;
-        
+
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getCollisionManager().enable = true;
         
         this.ballPool = new cc.NodePool();
-        
         this.selected_ball = [];
         
-        for (var i = 0; i < this.load_Box ; i++) { 
-            this.ball_span_new( this.node.width/2 ,this.node.height);
-        }
+        //init ball
+        this.ball_drop(this.init_Ball);
+        
+        //waveStart
+        this.waveController(1,2000);
         
         this.node.on('touchstart', function (event) {
             this.ball_get_touched(event,function(ball){
                 self.ball_select(ball);
             });
         }, this);
-            
 
         this.node.on('touchmove', function (event) {
             this.ball_get_touched(event,function(ball){
@@ -64,6 +85,29 @@ cc.Class({
             self.selected_ball_clear();
         }, this);
         
+        this.node.on('touchGround', function (event) {
+            event.stopPropagation();
+            self.ball_kill(event.target);
+            self.life--;
+        });
+        
+    },
+    
+    waveController : function(num,time){
+        let self = this;
+        setTimeout(function() {
+            self.ball_drop(num);
+            let n = Math.round(Math.random()*self.wave)+1;
+            let baseTime = 5000*Math.random();
+            let t = 7000*Math.random()/self.wave + baseTime + 2000;
+            self.waveController(n,t);
+        }, time);
+    },
+    
+    ball_drop : function(num){
+        for (var i = 0; i < num ; i++) { 
+            this.ball_span_new( this.node.width/2 ,this.node.height);
+        }
     },
     
     selected_balls_check_10 : function(){
@@ -78,6 +122,7 @@ cc.Class({
         let self = this;
         this.selected_ball.forEach(function(ball) {
             self.ball_kill(ball);
+            self.score_add(100);
         });
     },
     
@@ -130,13 +175,21 @@ cc.Class({
     
     ball_kill : function (ball){
         this.ballPool.put(ball);
-        this.ball_span_new( this.node.width/2 ,this.node.height);
-    },
         
+        if( this.zeroNode._children.length < 6 ){
+            this.bonus_ball_ls_5();
+        }
+    },
+    
+    bonus_ball_ls_5: function(){
+        this.score_add(1000);
+        this.ball_drop(10);
+    },
+    
     ball_span_new: function(x,y) {
         
         let newBox = null;
-        
+        console.log(this.ballPool.size());
         if(this.ballPool.size() > 0){
             
             newBox = this.ballPool.get();
@@ -150,7 +203,21 @@ cc.Class({
         newBox.setPosition(cc.p(x,y));
     },
     
-    update: function (dt) {
+    score_add: function(s){
+        this.score += s;
         
+        if(this.score >= this.score_next_level())
+            this.wave++;
     },
+    
+    score_next_level : function(){
+        return (Math.pow(this.wave,2))*300;
+    },
+    
+    update: function (dt) {
+        this.sore_label.string = 'Score: ' + this.score.toString() + "/" + this.score_next_level();
+        this.wave_label.string = 'Wave: ' + this.wave.toString();
+        this.life_label.string = 'HP: ' + this.life.toString();
+    },
+    
 });
