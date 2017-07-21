@@ -40,7 +40,13 @@ cc.Class({
     },
     
     touchGround : function(){
-        this.node.dispatchEvent( new cc.Event.EventCustom('touchGround', true) );
+        this.die();
+        D.lifeManager.life_edit(-1);
+    },
+    
+    die : function(){
+        D.ballManager.despawnBall(this);
+        //this.game.getComponent('game').ballPool.put(this.node);
     }
 
     // called every frame, uncomment this function to activate update callback

@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "box",
+    "_name": "ball",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -63,8 +63,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 506,
-      "y": 395
+      "x": 208,
+      "y": 558
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -157,7 +157,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "8e7a5SuRXtHWKIgFxM9eTxa",
+    "fileId": "60e21AP5rFP5LSkKErBVGln",
     "sync": false
   },
   {
@@ -255,7 +255,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "c67954Cu3BLYr0+E4XWKGzW",
+    "fileId": "d634bW4xD9EL5+gHvdqS0Hv",
     "sync": false
   }
 ]

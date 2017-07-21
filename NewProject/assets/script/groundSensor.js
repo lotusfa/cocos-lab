@@ -23,12 +23,8 @@ cc.Class({
        this.touch(otherCollider);
     },
 
-
-    
     touch: function(otherCollider){
-        //console.log('g');
-        
-       otherCollider.getComponent('box').touchGround();
+       otherCollider.getComponent('ball').touchGround();
     }
     
     // onEndContact: function (contact, selfCollider, otherCollider) {
