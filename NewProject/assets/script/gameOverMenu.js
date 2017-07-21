@@ -3,7 +3,8 @@ var GameOverMenu = cc.Class({
     extends: cc.Component,
     //-- 属性
     properties: {
-        score: cc.Label
+        score: cc.Label,
+        level_label: cc.Label
     },
     // 加载Game场景(重新开始游戏)
     restart : function () {
@@ -15,6 +16,7 @@ var GameOverMenu = cc.Class({
     },
     
     update: function () {
-        this.score.getComponent('cc.Label').string = "Score: " + D.scoreManager.score;
+        this.score.getComponent('cc.Label').string =  D.scoreManager.score;
+        this.level_label.getComponent('cc.Label').string = "Level " + D.waveManager.wave;
     }
 });
