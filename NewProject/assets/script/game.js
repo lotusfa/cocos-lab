@@ -32,7 +32,6 @@ var GameManager = cc.Class({
         this.gameOverMenu.active = false;
         this.MainMenu.active = true;
         this.state = State.Menu;
-        //this.runGame ();
     },
     
     runGame () {
@@ -52,6 +51,7 @@ var GameManager = cc.Class({
         D.waveManager.stopWave();
         this.state = State.Over;
         this.gameOverMenu.active = true;
+        this.MainMenu.active = false;
     },
     
     

@@ -20,8 +20,7 @@ cc.Class({
     },
     
     score_add: function(s){
-        this.score += s;
-        
+        if( D.game.state == 1) this.score += s;
         if(this.score >= this.score_next_level())
             D.waveManager.wave++;
     },

@@ -6,17 +6,29 @@ var MainMenu = cc.Class({
         icon_node : cc.Node,
         icon_moveDuration : 0.3,
         icon_moveHight : 200,
+        Tutorial: cc.Node,
+        Main: cc.Node,
     },
     
     onLoad: function () {
         // 初始化跳跃动作
-        console.log(this.icon_node);
         this.m = this.setMoveAction();
         this.icon_node.runAction(this.m);
+        this.home();
     },
     // 加载Game场景(重新开始游戏)
     startGame: function () {
         D.game.runGame();
+    },
+    
+    home : function () {
+        this.Main.active = true;
+        this.Tutorial.active = false;
+    },
+    
+    about : function () {
+        this.Main.active = false;
+        this.Tutorial.active = true;
     },
     
     setMoveAction : function(){

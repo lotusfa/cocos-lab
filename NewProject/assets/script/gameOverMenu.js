@@ -12,7 +12,7 @@ var GameOverMenu = cc.Class({
     },
     
     Home : function () {
-        cc.director.loadScene('game');
+        D.game.startMenu();
     },
     
     update: function () {
