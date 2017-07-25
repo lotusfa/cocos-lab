@@ -31,6 +31,6 @@ cc.Class({
     
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        this.wave_Label.getComponent("cc.Label").string = 'Level: ' + this.wave.toString();
+        this.wave_Label.getComponent("cc.Label").string = this.wave.toString();
     },
 });

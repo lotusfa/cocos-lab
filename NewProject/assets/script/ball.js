@@ -10,7 +10,12 @@ cc.Class({
         },
         opacity_selected_on : 250,
         opacity_selected_off : 150,
-        value : 0
+        value : 0,
+        img1 : cc.Sprite,
+        img2 : cc.Sprite,
+        img3 : cc.Sprite,
+        img4 : cc.Sprite,
+        img5 : cc.Sprite
     },
 
     // use this for initialization
@@ -23,12 +28,36 @@ cc.Class({
         this.node._components[1]._linearVelocity.y = -1*this.init_speed_y*Math.random();
         this.offSelected();
         
+        
+        
     },
         
     generateRandomNumber : function(){
         let str = Math.round(Math.random()*4)+1;
         this.value = str;
         this.box_label.string = str;
+        this.s = this.getComponent(cc.Sprite);
+        
+        //console.log(this.getComponent(cc.Sprite));
+        if(str == "1" ) {
+            this.img1.node.active = true;
+        }
+        if(str == "2" ) {
+            this.img2.node.active = true;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
+        if(str == "3" ) {
+            this.img3.node.active = true;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
+        if(str == "4" ) {
+            this.img4.node.active = true;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
+        if(str == "5" ) {
+            this.img5.node.active = true;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
     },
     
     onSelected : function(){

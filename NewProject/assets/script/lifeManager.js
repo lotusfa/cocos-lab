@@ -21,6 +21,6 @@ cc.Class({
     
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-         this.life_Label.getComponent("cc.Label").string = 'HP: ' + this.life.toString();
+         this.life_Label.getComponent("cc.Label").string = this.life.toString();
     },
 });

@@ -26,9 +26,9 @@ cc.Class({
             D.waveManager.wave++;
     },
     
-    // called every frame, uncomment this function to activate update callback
+    // called every frame, uncomment this function to activate update callback + "/" + this.score_next_level()
     update: function (dt) {
-         this.score_Label.getComponent("cc.Label").string = 'Score: ' + this.score.toString() + "/" + this.score_next_level();
+         this.score_Label.getComponent("cc.Label").string = this.score.toString() ;
     },
 });
 
