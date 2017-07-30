@@ -24,7 +24,7 @@ cc.Class({
         _attack_duration : 2000,
         _attack_type : AttackType.attack1B1,
         _size : 100,
-        
+        _type : 4,
         _state : State.Move,
         _speedX : 0,
         _left : false,
@@ -96,8 +96,7 @@ cc.Class({
         return (otherCollider.getComponent('unit') 
         && !otherCollider.getComponent('bullet') 
         && otherCollider.sensor === false 
-        && otherCollider.getComponent('unit')._team != this._team
-        && otherCollider.getComponent('unit')._HP >= 0 );
+        && otherCollider.getComponent('unit')._team != this._team );
     },
     
     fight : function(){
@@ -123,15 +122,12 @@ cc.Class({
     },
     
     fireBullet : function(){
+        
         this._interval.fightt = setInterval( ()=>{ 
             D.unitManager.spawnBullet ({ 
-                type : 4 , 
-                team : this._team , 
-                moveSpeed : 4, 
-                attack_rang : 40, 
-                attack_value : 100, 
-                attack_type : 0 , 
-                size : 10 },this.node.x,10);
+                type : this._type, 
+                team : this._team
+        } ,this.node.x,10);
         }, this._attack_duration);
     },
     
@@ -197,7 +193,6 @@ cc.Class({
     },
     
     _updateMove : function () {
-        
         //console.log(this._state ,this._left, this._right, this._speedX, this._team);
         if(this._state == State.Move){
             if (this._left) {

@@ -12,14 +12,17 @@ cc.Class({
     
     startWave () {
         //this.waveController(2,2000);
-        this.wave = 10;
+        this.wave = 1;
         
         D.unitManager.spawnHouse({ team : "A", HP : 25000});
         
         D.unitManager.spawnHouse({ team : "B", HP : 50000});
         
-        //D.unitManager.spawnUnit(6,"A");
-        
+        // D.unitManager.spawnUnit(6,"B");
+        // D.unitManager.spawnUnit(6,"B");
+        // D.unitManager.spawnUnit(6,"B");
+        // D.unitManager.spawnUnit(7,"A");
+        // D.unitManager.spawnUnit(5,"A");
         this.waveController(3, 1000);
     },
     
@@ -31,12 +34,12 @@ cc.Class({
         let self = this;
         this.t = setTimeout(function() {
             D.unitManager.spawnUnit(num,"B");
-            D.unitManager.spawnUnit(num,"A");
+            // D.unitManager.spawnUnit(num,"A");
             let level_index = self.wave/2;
-            if (level_index >= 5) level_index = 5;
+            if (level_index >= 3) level_index = 3;
             let n = Math.round(Math.random()*level_index)+2;
-            let baseTime = 2000*Math.random();
-            let t = 5000*Math.random()/self.wave + baseTime + 2000;
+            let baseTime = 1000*Math.random();
+            let t = 7000*Math.random()/self.wave + baseTime + 1000;
             self.waveController(n,t);
         }, time);
     },

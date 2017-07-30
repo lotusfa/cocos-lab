@@ -7,6 +7,7 @@ let AttackType = cc.Enum({
 });
  
 let unitType  = {
+    //short range, middle hp
     2 : {
         HP : 500,
         moveSpeed: 1,
@@ -16,6 +17,7 @@ let unitType  = {
         attack_type : AttackType.attack1B1,
         size : 50,
     },
+    //short range, middle hp
     3 : {
         HP : 500,
         moveSpeed: 1,
@@ -25,6 +27,7 @@ let unitType  = {
         attack_type : AttackType.attack1B1,
         size : 50,
     },
+    //long range 
     4 : {
         HP : 300,
         moveSpeed: 1.3,
@@ -34,68 +37,71 @@ let unitType  = {
         attack_type : AttackType.fireBullet,
         size : 50,
     },
+    //high HP
     5 : {
-        HP : 1500,
+        HP : 3000,
         moveSpeed: 0.5,
         attack_rang : 200,
-        attack_value : 200,
-        attack_duration : 4000,
+        attack_value : 300,
+        attack_duration : 3000,
         attack_type : AttackType.attackAll,
         size : 150,
     },
+    //span soldiers
     6 : {
-        HP : 2000,
+        HP : 1500,
         moveSpeed: 0.5,
         attack_rang : 500,
         attack_value : 100,
-        attack_duration : 3000,
+        attack_duration : 2000,
         attack_type : 3 ,
         size : 100,
     },
     6.5 : {
-        HP : 100,
+        HP : 200,
         moveSpeed: 1,
         attack_rang : 100,
         attack_value : 50,
         attack_duration : 1000,
         attack_type : AttackType.attack1B1,
-        size : 30,
+        size : 50,
     },
+    //long range, attack all 
     7 : {
-        HP : 500,
-        moveSpeed: 2.5,
-        attack_rang : 100,
-        attack_value : 60,
-        attack_duration : 500,
-        attack_type : AttackType.attack1B1,
-        size : 80,
+        HP : 1500,
+        moveSpeed: 0.8,
+        attack_rang : 550,
+        attack_value : 250,
+        attack_duration : 2500,
+        attack_type : AttackType.fireBullet,
+        size : 110,
     },
     8 : {
         HP : 2000,
-        moveSpeed: 0.5,
-        attack_rang : 100,
-        attack_value : 100,
-        attack_duration : 1500,
+        moveSpeed: 2.5,
+        attack_rang : 150,
+        attack_value : 300,
+        attack_duration : 250,
         attack_type : AttackType.attack1B1,
-        size : 100,
+        size : 105,
     },
     9 : {
         HP : 2000,
-        moveSpeed: 0.5,
-        attack_rang : 100,
-        attack_value : 100,
-        attack_duration : 1500,
-        attack_type : AttackType.attack1B1,
-        size : 100,
+        moveSpeed: 1,
+        attack_rang : 900,
+        attack_value : 1000,
+        attack_duration : 5000,
+        attack_type : AttackType.fireBullet,
+        size : 110,
     },
     10 : {
-        HP : 2000,
-        moveSpeed: 0.5,
-        attack_rang : 100,
-        attack_value : 100,
-        attack_duration : 1500,
-        attack_type : AttackType.attack1B1,
-        size : 100,
+        HP : 20000,
+        moveSpeed: 0.2,
+        attack_rang : 250,
+        attack_value : 1000,
+        attack_duration : 4000,
+        attack_type : AttackType.attackAll,
+        size : 200,
     },
 };
 
@@ -114,6 +120,10 @@ cc.Class({
         img4 : cc.Sprite,
         img5 : cc.Sprite,
         img6 : cc.Sprite,
+        img7 : cc.Sprite,
+        img8 : cc.Sprite,
+        img9 : cc.Sprite,
+        img10 : cc.Sprite,
     },
     setSoldier : function(arr){
      
@@ -159,10 +169,23 @@ cc.Class({
             this.img6.node.active = true;
             this.box_label.node.color = cc.color(255,255,255);
         }
-        
-        else if(Number(arr.type) > 6.5 ) {
-            this.img1.node.scale = this._size*2 / 100;
-            this.img1.node.active = true;
+        else if(arr.type == "7" ) {
+            this.img7.node.active = true;
+            this.img7.node.scale = this._size*2 /100;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
+        else if(arr.type == "8" ) {
+            this.img8.node.active = true;
+            this.img8.node.scale = this._size*2 / 100;
+            this.box_label.node.color = cc.color(255,255,255);
+        }
+        else if(arr.type == "9" ) {
+            this.img9.node.scale = this._size*2 / 100;
+            this.img9.node.active = true;
+        }
+        else if(arr.type == "10" ||  arr.type == "6.5" ) {
+            this.img10.node.scale = this._size*2 / 100;
+            this.img10.node.active = true;
         }
         
         this.box_label.node.scale = this._size*2 / 100;
