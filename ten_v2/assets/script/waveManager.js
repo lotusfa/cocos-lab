@@ -11,8 +11,16 @@ cc.Class({
     },
     
     startWave () {
-        this.waveController(2,2000);
-        this.wave = 1;
+        //this.waveController(2,2000);
+        this.wave = 10;
+        
+        D.unitManager.spawnHouse({ team : "A", HP : 25000});
+        
+        D.unitManager.spawnHouse({ team : "B", HP : 50000});
+        
+        //D.unitManager.spawnUnit(6,"A");
+        
+        this.waveController(3, 1000);
     },
     
     stopWave () {
@@ -23,6 +31,7 @@ cc.Class({
         let self = this;
         this.t = setTimeout(function() {
             D.unitManager.spawnUnit(num,"B");
+            D.unitManager.spawnUnit(num,"A");
             let level_index = self.wave/2;
             if (level_index >= 5) level_index = 5;
             let n = Math.round(Math.random()*level_index)+2;

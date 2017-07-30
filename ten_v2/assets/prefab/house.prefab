@@ -41,7 +41,7 @@
       "__id__": 12
     },
     "_id": "",
-    "_opacity": 150,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,
@@ -66,8 +66,8 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 420,
-      "y": 380
+      "x": 860,
+      "y": 90
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -162,7 +162,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "63bad63f-9e51-46ea-967e-65c441c7c3d8"
     },
     "fileId": "2ef0c+qRDpFX5L1HnQZqrFZ",
     "sync": false
@@ -249,7 +249,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "63bad63f-9e51-46ea-967e-65c441c7c3d8"
     },
     "fileId": "b33cbcYWX5MF7VUpl0eqiiK",
     "sync": false
@@ -285,25 +285,31 @@
       "__id__": 1
     },
     "_enabled": true,
-    "box_label": {
-      "__id__": 6
-    },
-    "unitID": "0",
-    "_unitID": -1,
     "type": 0,
     "moveSpeed": 0,
-    "team": "B",
-    "HP": 1000,
-    "attack_rang": 500,
-    "attack_value": 100,
-    "attack_duration": 2000,
-    "attack_type": 0,
+    "_team": null,
+    "_HP": 1000,
+    "_attack_rang": 200,
+    "_attack_value": 100,
+    "_attack_duration": 2000,
+    "_attack_type": 0,
+    "_size": 100,
     "_state": 0,
     "_speedX": 0,
     "_left": false,
     "_right": false,
     "_enemys": [],
-    "_interval": []
+    "_interval": [],
+    "box_label": {
+      "__id__": 6
+    },
+    "team": "A",
+    "HP": 50000,
+    "attack_rang": 500,
+    "attack_value": 100,
+    "attack_duration": 2000,
+    "attack_type": 0,
+    "size": 100
   },
   {
     "__type__": "cc.PhysicsBoxCollider",
@@ -357,7 +363,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "63bad63f-9e51-46ea-967e-65c441c7c3d8"
     },
     "fileId": "e7ced6INXZPWL9VxqwKRBli",
     "sync": false
